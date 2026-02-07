@@ -1,0 +1,9 @@
+{
+  "name": "MediConnect 360",
+  "description": "A comprehensive telemedicine platform connecting patients, doctors, pharmacies, labs, and delivery riders with integrated video consultations and secure QR delivery verification.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>MediConnect 360</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Inter"', '"Exo 2"', 'sans-serif'],
+              display: ['"Rajdhani"', 'sans-serif'],
+            },
+            colors: {
+              background: '#f8fafc', // Slate 50
+              surface: '#ffffff',
+              primary: '#0ea5e9', // Sky 500 (Tech Blue)
+              secondary: '#6366f1', // Indigo 500
+              accent: '#f43f5e', // Rose 500
+              success: '#10b981', // Emerald 500
+              dark: '#0f172a', // Slate 900
+              subtle: '#94a3b8', // Slate 400
+            },
+            boxShadow: {
+              'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+              'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+              'glow': '0 0 20px rgba(14, 165, 233, 0.25)',
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.05)',
+              '3d': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 -4px 0 rgba(0,0,0,0.1)',
+              'premium': '0 20px 40px -5px rgba(0,0,0,0.1), 0 10px 20px -5px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6)',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'scan': 'scan 2s linear infinite',
+              'hover-float': 'hoverFloat 0.3s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              hoverFloat: {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(-5px)' },
+              },
+              scan: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f0f4f8;
+        color: #0f172a;
+      }
+      /* Hide scrollbar for mobile feel */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      
+      /* Base Glass Panel - Enhanced */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+      }
+
+      /* Premium Glass Card - Enhanced */
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+        backdrop-filter: blur(24px) saturate(150%);
+        -webkit-backdrop-filter: blur(24px) saturate(150%);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 
+          0 10px 20px rgba(0,0,0,0.04),
+          0 2px 6px rgba(0,0,0,0.02),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-5px) scale(1.01);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.9);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+        z-index: 10;
+      }
+
+      /* Auto Image Enhancer Effect */
+      .img-enhance {
+        filter: contrast(1.05) saturate(1.1) brightness(1.02);
+        transition: filter 0.3s ease;
+      }
+      .img-enhance:hover {
+        filter: contrast(1.1) saturate(1.2) brightness(1.05);
+      }
+
+      /* Dark Glass for Contrast */
+      .glass-dark {
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(20px) saturate(150%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: white;
+      }
+      
+      /* 3D Classes */
+      .card-3d {
+        transform-style: preserve-3d;
+      }
+      
+      .icon-3d-wrapper {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      .icon-3d-wrapper:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), inset 0 -2px 4px rgba(0,0,0,0.1);
+        pointer-events: none;
+      }
+      
+      /* Clay/3D Button Effect */
+      .btn-clay {
+        box-shadow: 
+           6px 6px 12px rgba(184, 185, 190, 0.4), 
+           -6px -6px 12px rgba(255, 255, 255, 0.8);
+        transition: all 0.2s ease;
+      }
+      .btn-clay:active {
+        box-shadow: 
+           inset 4px 4px 8px rgba(184, 185, 190, 0.4), 
+           inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+        transform: scale(0.98);
+      }
+
+      .btn-primary-3d {
+        box-shadow: 0 4px 0 rgb(14, 116, 144), 0 10px 20px rgba(14, 165, 233, 0.3);
+        transition: all 0.1s ease;
+      }
+      .btn-primary-3d:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 rgb(14, 116, 144), inset 0 2px 4px rgba(0,0,0,0.2);
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "qrcode.react": "https://esm.sh/qrcode.react@^4.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
